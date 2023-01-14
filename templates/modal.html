@@ -1,0 +1,25 @@
+{% from 'bootstrap5/form.html' import render_form_row %}
+{% block modal %}
+<div class="modal fade " id="newKanban" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content ">
+      <div class="modal-header ">
+        <h5 class="modal-title" id="newKanbanLabel">Make a new Kanban</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form method="post">
+      <div class="modal-body">
+        {{ kanban_form.csrf_token }}
+        {{ render_form_row([kanban_form.kanban_name], col_map={'kanban_name': "form-control, size=32"},form_type='inline' )}}
+        {{ render_form_row([kanban_form.kanban_info], col_map={'kanban_name': "form-control, size=32"},form_type='inline' )}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        {{ render_form_row([kanban_form.submit], button_style = 'form-control btn btn-primary form-btn')  }}
+
+      </div>
+        </form>
+    </div>
+  </div>
+</div>
+{% endblock modal %}

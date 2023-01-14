@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "header.html" %}
+<body>
+
+<section>
+    <div class="container-fluid col-11 mt-5" id="kanbanMenu">
+        <nav class="navbar navbar-light bg-light shadow">
+            <div class="container-fluid">
+                <a class="navbar-brand">{{requested_kanban.kanban_name}}</a>
+                <div class="d-flex w-auto me-5">
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#titleCard"
+                            class="btn btn-secondary mx-2 shadow form-btn">Add Title Card
+                    </button>
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#listCard"
+                            class="btn btn-secondary mx-2 shadow form-btn">Add Text Card
+                    </button>
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#imgCard"
+                            class="btn btn-secondary mx-2 shadow form-btn">Add Image Card
+                    </button>
+                    <a href="{{url_for('edit_kanban', kanban_id=requested_kanban.id) }}"
+                            class="btn btn-primary mx-2 shadow form-btn">Edit Kanban
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <div class="progress mt-2 shadow">
+            <div class="progress-bar" role="progressbar" style="width: {{requested_kanban.kanban_progress}}%;" aria-valuenow="{{requested_kanban.kanban_progress}}" aria-valuemin="0" aria-valuemax="100">{{requested_kanban.kanban_progress}}%</div>
+        </div>
+    </div>
+
+    <div class="container-fluid py-5 col-11">
+        <div class="row">
+            <!-- Start lane -->
+            <div class="col-12 col-lg-3">
+                <div class="card mb-3 shadow">
+                    <div class="card-header bg-light">
+
+                        <h3 class="card-title h5 mb-1">
+                            Backlog
+                        </h3>
+                        <small class="mb-0 text-muted">
+                            Nam pretium turpis et arcu. Duis arcu.
+                        </small>
+                    </div>
+                    <div class="card-body">
+                        <div class="tasks" data-plugin="dragula" id="backlog">
+
+                            <!-- Start task -->
+                            {% for title_card in requested_kanban.title_cards%}
+                                {% if title_card.position == 0%}
+                                    {% include "title-card.html" %}
+                                {% endif %}
+                            {% endfor %}
+                            <!-- End task -->
+
+                            <!-- Start task -->
+                            {% for text_card in requested_kanban.title_text_cards %}
+                                {% if text_card.position == 0%}
+                                    {% include "title-text-card.html" %}
+                                {% endif %}
+                            {% endfor %}
+                            <!-- End task -->
+
+                            <!-- Start task -->
+                            {% for img_card in requested_kanban.title_img_cards %}
+                                {% if img_card.position == 0%}
+                                    {% include "title-img-card.html" %}
+                                {% endif %}
+                            {% endfor %}
+                            <!-- End task -->
+
+                        </div>
+                        <a class="btn btn-primary btn-block" href="#header">Add task</a>
+                    </div>
+                </div>
+            </div>
+            <!-- End lane -->
+
+            <!-- Start lane -->
+            <div class="col-12 col-lg-3">
+                <div class="card mb-3 shadow">
+                    <div class="card-header bg-light">
+                        <h3 class="card-title h5 mb-1">
+                            In Progress
+                        </h3>
+                        <small class="mb-0 text-muted">
+                            Nam pretium turpis et arcu. Duis arcu.
+                        </small>
+                    </div>
+                    <div class="card-body">
+                        <div class="tasks" id="in_progress">
+                            <!-- Start task -->
+                            {% for title_card in requested_kanban.title_cards%}
+                                {% if title_card.position == 1 %}
+                                    {% include "title-card.html" %}
+                                {% endif %}
+                            {% endfor %}
+                            <!-- End task -->
+
+                            <!-- Start task -->
+                            {% for text_card in requested_kanban.title_text_cards %}
+                                {% if text_card.position == 1 %}
+                                    {% include "title-text-card.html" %}
+                                {% endif %}
+                            {% endfor %}
+                            <!-- End task -->
+
+                            <!-- Start task -->
+                            {% for img_card in requested_kanban.title_img_cards %}
+                                {% if img_card.position == 1 %}
+                                    {% include "title-img-card.html" %}
+                                {% endif %}
+                            {% endfor %}
+                            <!-- End task -->
+                        </div>
+                        <a class="btn btn-primary btn-block" href="#header">Add task</a>
+                    </div>
+                </div>
+            </div>
+            <!-- End lane -->
+
+            <!-- Start lane -->
+            <div class="col-12 col-lg-3">
+                <div class="card mb-3 shadow">
+                    <div class="card-header bg-light">
+                        <h3 class="card-title h5 mb-1">
+                            In Review
+                        </h3>
+                        <small class="mb-0 text-muted">
+                            Aenean posuere, tortor sed cursus feugiat.
+                        </small>
+                    </div>
+                    <div class="card-body">
+                        <div class="tasks" id="in_review">
+                            <!-- Start task -->
+                            {% for title_card in requested_kanban.title_cards%}
+                                {% if title_card.position == 2 %}
+                                    {% include "title-card.html" %}
+                                {% endif %}
+                            {% endfor %}
+                            <!-- End task -->
+
+                            <!-- Start task -->
+                            {% for text_card in requested_kanban.title_text_cards %}
+                                {% if text_card.position == 2 %}
+                                    {% include "title-text-card.html" %}
+                                {% endif %}
+                            {% endfor %}
+                            <!-- End task -->
+
+                            <!-- Start task -->
+                            {% for img_card in requested_kanban.title_img_cards %}
+                                {% if img_card.position == 2 %}
+                                    {% include "title-img-card.html" %}
+                                {% endif %}
+                            {% endfor %}
+                            <!-- End task -->
+
+                        </div>
+                        <a class="btn btn-primary btn-block" href="#header">Add task</a>
+                    </div>
+                </div>
+            </div>
+            <!-- End lane -->
+
+            <!-- Start lane -->
+            <div class="col-12 col-lg-3">
+                <div class="card mb-3 shadow">
+                    <div class="card-header bg-light">
+                        <h3 class="card-title h5 mb-1">
+                            Completed
+                        </h3>
+                        <small class="mb-0 text-muted">
+                            Curabitur ligula sapien, tincidunt non.
+                        </small>
+                    </div>
+                    <div class="card-body">
+                        <div class="tasks" id="completed">
+                            <!-- Start task -->
+                            {% for title_card in requested_kanban.title_cards%}
+                                {% if title_card.position == 3 %}
+                                    {% include "title-card.html" %}
+                                {% endif %}
+                            {% endfor %}
+                            <!-- End task -->
+
+                            <!-- Start task -->
+                            {% for text_card in requested_kanban.title_text_cards %}
+                                {% if text_card.position == 3 %}
+                                    {% include "title-text-card.html" %}
+                                {% endif %}
+                            {% endfor %}
+                            <!-- End task -->
+
+                            <!-- Start task -->
+                            {% for img_card in requested_kanban.title_img_cards %}
+                                {% if img_card.position == 3 %}
+                                    {% include "title-img-card.html" %}
+                                {% endif %}
+                            {% endfor %}
+                            <!-- End task -->
+                        </div>
+                        <a class="btn btn-primary btn-block" href="#header">Add task</a>
+                    </div>
+                </div>
+            </div>
+            <!-- End lane -->
+
+        </div>
+    </div>
+    {% include "project_modals.html" %}
+</section>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js'></script>
+{% include "footer.html" %}
+</body>
+</html>

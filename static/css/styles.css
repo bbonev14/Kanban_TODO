@@ -1,0 +1,119 @@
+.gu-mirror{
+    position:fixed!important;
+    margin:0!important;
+    z-index:9999!important;
+    opacity:.8;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    filter:alpha(opacity=80)
+}
+.gu-hide{
+    display:none!important
+}
+.gu-unselectable{
+    -webkit-user-select:none!important;
+    -moz-user-select:none!important;
+    -ms-user-select:none!important;
+    user-select:none!important
+}
+.gu-transit{
+    opacity:.2;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+    filter:alpha(opacity=20)
+}
+
+.no-dec {
+    text-decoration: none;
+}
+
+.navbar-nav {
+  flex-flow: row nowrap;
+}
+
+.icon-dropdown{
+  padding-left:5%;
+}
+
+@media only screen and (max-width: 995px) {
+    .nav-item{
+      padding-right:7%;
+    }
+
+    .icon-dropdown{
+      padding:2% 0 0 0%;
+    }
+}
+
+#titlescreen{
+    background-image: url('https://img.freepik.com/free-vector/white-elegant-texture-background-style_23-2148432200.jpg?w=826&t=st=1672919391~exp=1672919991~hmac=0a232709d694233d9331f88ba72d7c809ea279442c5bc87ebac664c95b398de5');
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size:100%;
+    color:darkgrey;
+    height:500px;
+     }
+
+@media only screen and (max-width: 995px) {
+    #titlescreen{
+        background-size:300%;
+        height:800px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #middle_cards{
+        text-align: center;
+    }
+    #titlescreen{
+        text-align: center;
+    }
+    #sign-up{
+        text-align: center;
+    }
+    .footer-links{
+    text-align: left;
+    }
+
+}
+
+ .icon-link, .main-img, .carousel-card,.template_card, .form-btn{
+    transition: all 0.3s;
+}
+
+.icon-link:hover, .main-img:hover, .carousel-card:hover,.template_card:hover, .form-btn:hover {
+    transform: scale(1.15)
+}
+
+.reg_page_title{
+    background-image: url('https://img.freepik.com/free-vector/white-elegant-texture-background-style_23-2148432200.jpg?w=826&t=st=1672919391~exp=1672919991~hmac=0a232709d694233d9331f88ba72d7c809ea279442c5bc87ebac664c95b398de5');
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size:100%;
+}
+@media only screen and (max-width: 1600px) {
+.reg_page_title{
+    background-size:200%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+.reg_page_title{
+    background-size:350%;
+    }
+}
+
+.inputfield {
+  height: 50px
+}
+
+.inputfieldtext {
+  height: 100px
+}
+.cursor-grab {
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+.tasks {
+  min-height: 450px;
+}
+

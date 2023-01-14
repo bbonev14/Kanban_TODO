@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "header.html" %}
+<body>
+<section style="background-color: #eee;">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col">
+                <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="{{url_for('home')}}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">User</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card mb-4">
+                    <div class="card-body text-center">
+                        <img src="{{ current_user.email | gravatar }}" alt="avatar"
+                             class="rounded-circle img-fluid" style="width: 150px;">
+                        <h5 class="my-3">{{ current_user.name}}</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Full Name</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{ current_user.name}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Email</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{ current_user.email}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Phone</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">123 456 789</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Mobile</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">123 456 789</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Address</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">Some, Place, at 45st</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card mb-4 mb-md-0">
+                            <div class="card-body" id="kanbansList">
+                                <h5 class="mb-4">My Kanbans</h5>
+
+                                {% for kanban in user.kanbans %}
+                                <div class="py-2">
+                                    <a class="mb-2 text-dark" href="{{url_for('kanban', kanban_id = kanban.id)}}"
+                                       style="font-size: 1rem; text-decoration: none;">{{kanban.kanban_name}} <small
+                                            class="text-muted float-end d-inline-block">{{kanban.kanban_progress}}%</small></a>
+                                    <div class="progress rounde" style="height: 5px;">
+                                        <div class="progress-bar" role="progressbar"
+                                             style="width: {{kanban.kanban_progress}}%"
+                                             aria-valuenow="{{kanban.kanban_progress}}"
+                                             aria-valuemin="0" aria-valuemax="100">
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+{% include "footer.html" %}
+</body>
+</html>

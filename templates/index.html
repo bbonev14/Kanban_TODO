@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+{% from 'bootstrap5/form.html' import render_form_row %}
+<html lang="en">
+{% include "header.html" %}
+<body>
+<section class="colored-section pb-5" id="title">
+        <!-- Title -->
+        <div class="jumbotron bg-cover text-black" id="titlescreen">
+                <div class="container col-xxl-12 py-5">
+                    <div class="row flex-lg-row-reverse align-items-center">
+                      <div class="col-12 col-sm-12 col-lg-6 align-items-center">
+                        <img src="//images.ctfassets.net/rz1oowkt5gyp/75rDABL8fyMtNLlUAtBxrg/c5e145977a86c41c47e17c69410c64f7/TrelloUICollage_4x.png" class="d-block mx-lg-auto img-fluid main-img" loading="lazy" width="500" height="400">
+                      </div>
+                      <div class="col-lg-6">
+                        <h1 class="display-4 fw-bold lh-1 mb-3">Lorem ipsum dolor sit amet, consectetur</h1>
+                        <p class="lead">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                          <a href="#sign-up" type="button" class="btn btn-primary btn-lg ">Sign Up</a>
+                          <a href="#middle_cards" type="button" class="btn btn-outline-secondary btn-lg ">Info</a>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+        </div>
+
+</section>
+<section class="colored-section" id="middle_cards">
+<div class="container col-xxl-12">
+    <div class="row">
+        <div class="col-12 col-xs-12 col-sm-12 col-md-8 col-lg-6">
+                <h1 class="display-6 fw-bold lh-1 mb-3">At vero eos et accusamus et iusto</h1>
+                <p class="lead">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime voluptas assumenda est, omnis dolor repellendus. </p>
+        </div>
+    </div>
+</div>
+<div class="container col-xxl-12 pt-5">
+    <div class="row row-cols-1 g-3 flex-lg-row-reverse align-items-center">
+        <div class="col-12 col-sm-12 col-lg-8 align-items-center">
+            <div id="carouselExampleSlidesOnly" class="carousel slide shadow-lg" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="/static/assets/images/sc1.png" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="/static/assets/images/sc2.png" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="/static/assets/images/sc3.png" class="d-block w-100" alt="...">
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="d-flex flex-column mb-3">
+                <div class="card p-2 shadow carousel-card" style="width: 100%;">
+                  <div class="card-body">
+                    <a class="card-block stretched-link text-decoration-none" href data-bs-target="#carouselExampleSlidesOnly" data-bs-slide-to="0">
+                        <h5 class="card-title">Phasellus egestas</h5>
+                        <p class="card-text">Phasellus egestas consequat lorem, eu suscipit neque iaculis vitae. Nam in nisi dui. Pellentesque convallis dolor id arcu aliquet tristique.</p>
+                    </a>
+                  </div>
+                </div>
+                <div class="card p-2 mt-4 mb-4 shadow carousel-card" style="width: 100%;">
+                  <div class="card-body">
+                    <a class="card-block stretched-link text-decoration-none" href data-bs-target="#carouselExampleSlidesOnly" data-bs-slide-to="1">
+                        <h5 class="card-title">Nulla at porta odio</h5>
+                        <p class="card-text">Maecenas ut leo eget enim aliquam blandit. Quisque viverra iaculis diam tincidunt convallis. Sed ullamcorper varius ligula.</p>
+                    </a>
+                  </div>
+                </div>
+                <div class="card p-2 shadow carousel-card" style="width: 100%;">
+                  <div class="card-body">
+                    <a class="card-block stretched-link text-decoration-none" href data-bs-target="#carouselExampleSlidesOnly" data-bs-slide-to="2">
+                        <h5 class="card-title">Mauris pretium lacus</h5>
+                        <p class="card-text">Nulla ornare accumsan leo, vitae rhoncus arcu ullamcorper ut.</p>
+                    </a >
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</section>
+{% if not current_user.is_authenticated:%}
+<section class="colored-section" id="sign-up">
+ <div class="container col-12 col-xxl-12 px-4 py-5">
+    <div class="row align-items-center g-lg-5 py-5">
+      <div class="col-lg-7 text-center text-lg-start">
+        <h1 class="display-4 fw-bold lh-1 mb-3">Vertically centered hero sign-up form</h1>
+        <p class="col-lg-10 fs-4">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+      </div>
+      <div class="col-md-10 mx-auto col-lg-5">
+        <form class="p-4 p-md-5 border rounded-3 bg-light" method="post">
+            {{ form.csrf_token() }}
+                  {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                         <p class="alert alert-danger" role="alert">{{ message }}</p>
+                        {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <div class="mb-3">
+                {{ render_form_row([form.name], col_map={'name': "form-control, size=32"}, form_type='inline' ) }}
+            </div>
+          <div class="mb-2">
+              {{ render_form_row([form.email], col_map={'email': "form-control, size=32"}, form_type='inline' ) }}
+
+          </div>
+          <div class="mb-2">
+              {{ render_form_row([form.password], col_map={'password': "form-control, size=32"} ,form_type='inline' ) }}
+          </div>
+          <div class="checkbox mb-3">
+            <label>
+              <input type="checkbox" value="remember-me"> Remember me
+            </label>
+          </div>{{ render_form_row([form.submit], button_style = 'form-control btn btn-primary btn-lg mx-3 form-btn w-100')  }}
+<!--          <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>-->
+          <hr class="my-4">
+          <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% else %}
+<section class="colored-section" id="sign-up">
+ <div class="container col-12 col-xxl-12 px-4 py-5">
+    <div class="row align-items-center g-lg-5 py-5">
+      <div class="col-lg-7 text-center text-lg-start">
+        <h1 class="display-4 fw-bold lh-1 mb-3">Vertically centered hero sign-up form</h1>
+        <p class="col-lg-10 fs-4">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+      </div>
+      <div class="col-md-10 mx-auto col-lg-5">
+        <div class="p-4 p-md-5 border rounded-3 bg-light" method="post">
+            <button type="button" class="btn btn-primary col-12 btn-lg" data-bs-toggle="modal" data-bs-target="#newKanban">New Kanban</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+<section class="colored-section" id="choose-layout">
+    <div class="container col-12 col-xxl-12 px-4 pb-5">
+        <div class="row align-items-center g-lg-5 py-5">
+
+            <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 template_card ">
+                <div class="card mb-3 text-center shadow-lg mb-5">
+                      <img src="/static/assets/images/sc2.png" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Mauris pretium</h5>
+                        <p class="card-text">Nulla at porta odio. Ut ornare dui et tempor volutpat. Aliquam erat volutpat. Nulla facilisi. Maecenas ut leo eget enim aliquam blandit.</p>
+                        <p class="card-text"><small class="text-muted">Some text</small></p>
+                      </div>
+                      <div class="card-footer ">
+                          <div class="d-grid gap-5 m-1">
+                                <a href="" class="btn btn-outline-secondary btn-block btn-lg px-5 py-2" data-bs-toggle="modal" data-bs-target="#newKanban">Render Template</a>
+                          </div>
+                      </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 template_card">
+                 <div class="card mb-3 text-center shadow-lg mb-5">
+                      <img src="/static/assets/images/sc1.png" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Duis iaculis</h5>
+                        <p class="card-text">Aliquam euismod tristique libero quis condimentum. Sed fringilla magna est, eu interdum nunc convallis iaculis. Praesent suscipit magna arcu, nec congue diam fermentum non. Nulla ornare accumsan leo.</p>
+                        <p class="card-text"><small class="text-muted">Some text</small></p>
+                      </div>
+                      <div class="card-footer ">
+                          <div class="d-grid gap-5 m-1">
+                                <a class="btn btn-outline-primary btn-block btn-lg px-5 py-2" data-bs-toggle="modal" data-bs-target="#newKanban">Render Template</a>
+                          </div>
+                      </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+{% include "footer.html" %}
+</body>
+</html>

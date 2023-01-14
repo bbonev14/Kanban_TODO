@@ -1,0 +1,42 @@
+{% from 'bootstrap5/form.html' import render_form_row %}
+
+{% include "header.html" %}
+<section class="vh-100 bg-image"
+  style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card shadow-lg" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Edit Kanban</h2>
+
+              <form method="post">
+                {{ form.csrf_token }}
+
+                <div class="form-outline mb-2">
+                    <label class="form-label" >Kanban Name</label>
+                    {{ render_form_row([form.kanban_name], col_map={'kanban_name': "form-control, size=32"},form_type='inline' )}}
+                    <label class="form-label" >Kanban Info</label>
+                    {{ render_form_row([form.kanban_info], col_map={'kanban_info': "form-control, size=32"},form_type='inline' )}}
+                </div>
+                <div class="form-outline mb-4">
+                      <label class="form-label" >Kanban Progress</label>
+                      {{ render_form_row([form.progress], col_map={'progress': "form-control, size=32"},form_type='inline' )}}
+                      <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{form.progress.data}}" aria-valuemin="0" aria-valuemax="100" style="width: {{form.progress.data}}%"></div>
+                      </div>
+                </div>
+
+                {{ render_form_row([form.submit], row_class='d-flex justify-content-center col-12', col_map={'submit':'d-flex justify-content-center col-12 '}, button_size='lg', button_style = 'primary col-8 form-btn shadow')  }}
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% include "footer.html" %}

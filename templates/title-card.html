@@ -1,0 +1,28 @@
+<div class="card mb-3 cursor-grab">
+    <div class="card-body">
+        <a class="text-dark float-end mb-2 no-dec" data-bs-toggle="collapse"
+           href="#title_card_collapse{{title_card.id}}" role="button"
+           aria-expanded="false">...</a>
+        <p class="mb-0">{{title_card.title}}</p>
+        <div class="text-right">
+            <small class="text-muted mb-1 d-inline-block ">{{title_card.progress}}%</small>
+        </div>
+        <div class="progress" style="height: 5px; width: 100%;">
+            <div class="progress-bar" role="progressbar" style="width: {{title_card.progress}}%;"
+                 aria-valuenow="{{title_card.progress}}" aria-valuemin="{{title_card.progress}}"
+                 aria-valuemax="100"></div>
+        </div>
+        <div class="collapse pt-2" id="title_card_collapse{{title_card.id}}">
+            <a href="{{url_for('delete_card', kanban_id=requested_kanban.id, table=title_card.__table__, card_id=title_card.id) }}"
+               class="badge bg-dark btn-sm text-white mb-2 float-end mx-2">DELETE</a>
+
+            <a class="badge bg-primary btn-sm text-white mb-2 float-end mx-2"
+               href="{{url_for('edit_card', kanban_id=requested_kanban.id, table=title_card.__table__, card_id=title_card.id, progress=title_card.progress) }}">EDIT</a>
+
+            <a href="{{url_for('progress_edit', kanban_id=requested_kanban.id, table=title_card.__table__, card_id=title_card.id, value='10') }}"
+               class="btn-sm float-start mx-2 no-dec">➕</a>
+            <a href="{{url_for('progress_edit', kanban_id=requested_kanban.id, table=title_card.__table__, card_id=title_card.id, value='0') }}"
+               class="btn-sm pb-3 float-start mx-2 no-dec">➖</a>
+        </div>
+    </div>
+</div>

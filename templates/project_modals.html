@@ -1,0 +1,80 @@
+{% from 'bootstrap5/form.html' import render_form_row %}
+{% block project_modals %}
+<div class="modal fade " id="titleCard" tabindex="-1" aria-labelledby="titleCardLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content ">
+            <div class="modal-header ">
+                <h5 class="modal-title" id="titleCardLabel">Add a new Title Card</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post">
+                <div class="modal-body">
+                    {{ title_card_form.csrf_token }}
+                    {{ render_form_row([title_card_form.card_title], col_map={'kanban_name': "form-control,
+                    size=32"},form_type='inline' )}}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    {{ render_form_row([title_card_form.submit], button_style = 'form-control btn btn-primary form-btn')
+                    }}
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade " id="listCard" tabindex="-1" aria-labelledby="textCardLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content ">
+            <div class="modal-header ">
+                <h5 class="modal-title" id="textCardLabel">Add a new Text Card</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post">
+                <div class="modal-body">
+                    {{ text_card_form.csrf_token }}
+                    {{ render_form_row([text_card_form.text_card_title], col_map={'kanban_name': "form-control,
+                    size=32"},form_type='inline' )}}
+                    {{ render_form_row([text_card_form.card_text], col_map={'kanban_name': "form-control,
+                    size=32"},form_type='inline' )}}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    {{ render_form_row([text_card_form.submit], button_style = 'form-control btn btn-primary form-btn')
+                    }}
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade " id="imgCard" tabindex="-1" aria-labelledby="imgCardLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content ">
+            <div class="modal-header ">
+                <h5 class="modal-title" id="imgCardLabel">Add a new Image Card</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post">
+                <div class="modal-body">
+                    {{ img_card_form.csrf_token }}
+                    {{ render_form_row([img_card_form.img_card_title], col_map={'kanban_name': "form-control,
+                    size=32"},form_type='inline' )}}
+                    {{ render_form_row([img_card_form.card_img_url], col_map={'kanban_name': "form-control,
+                    size=32"},form_type='inline' )}}
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    {{ render_form_row([img_card_form.submit], button_style = 'form-control btn btn-primary form-btn')
+                    }}
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock project_modals %}
